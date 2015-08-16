@@ -7,6 +7,10 @@
     * `text` : text
     * `posids` : return a matching posid, seperated by ','
 
+```shell
+$ curl -XGET 'http://192.168.59.103:4567/morpheme' -d 'text=눈 마사지기 사요&posids=150,151'
+```
+
 #### Result
 
 ```json
