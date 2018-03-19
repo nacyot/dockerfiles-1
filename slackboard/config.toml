@@ -1,0 +1,22 @@
+[core]
+port = "29800"
+slack_url = ""
+qps = 1
+max_delay_duration = 5
+
+[log]
+access_log = "stdout"
+error_log = "stderr"
+level = "error"
+
+[[tags]]
+tag = "clamav"
+channel = "#dev-monitoring"
+username = "clamav"
+icon_emoji = ":imp:"
+
+[[tags]]
+tag = "log_to_s3"
+channel = "#dev-monitoring"
+username = "log-to-s3"
+icon_emoji = ":truck:"

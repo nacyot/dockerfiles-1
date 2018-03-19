@@ -1,0 +1,10 @@
+[core]
+port = "{{PORT}}"
+slack_url = "{{SLACK_URL}}"
+qps = {{QPS}}
+max_delay_duration = {{MAX_DELAY_DURATION}}
+
+[log]
+access_log = "stdout"
+error_log = "stderr"
+level = "error"
