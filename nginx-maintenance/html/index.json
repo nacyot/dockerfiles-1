@@ -1,0 +1,7 @@
+{
+  "status": {
+     "code": "Error Mainterance",
+     "message": "점검중입니다.",
+     "type": "alert"
+  }
+}
