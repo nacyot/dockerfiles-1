@@ -1,15 +1,16 @@
 [databases]
-* = host={{POSTGRES_HOST}} port={{POSTGRES_PORT}}
+* = host={{POSTGRES_HOST}} port={{POSTGRES_PORT}} auth_user={{PGBOUNCER_USER}}
 
 [pgbouncer]
 listen_addr = {{PGBOUNCER_LISTEN_HOST}}
 listen_port = {{PGBOUNCER_LISTEN_PORT}}
 unix_socket_dir = /var/run/postgresql
-auth_type = trust
-auth_file = /etc/pgbouncer/userlist.txt
 pool_mode = {{PGBOUNCER_POOL_MODE}}
 server_reset_query = DISCARD ALL
 max_client_conn = {{PGBOUNCER_MAX_CLIENT_CONN}}
 default_pool_size = {{PGBOUNCER_DEFAULT_POOL_SIZE}}
-ignore_startup_parameters = extra_float_digits
 server_idle_timeout = {{PGBOUNCER_IDLE_TIMEOUT}}
+ignore_startup_parameters = extra_float_digits
+auth_type = md5
+auth_file = /etc/pgbouncer/userlist.txt
+auth_query = SELECT * FROM {{PGBOUNCER_USER}}.get_auth($1)

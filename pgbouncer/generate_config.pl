@@ -21,6 +21,7 @@ $template = substitute_env($template, 'PGBOUNCER_POOL_MODE');
 $template = substitute_env($template, 'PGBOUNCER_MAX_CLIENT_CONN');
 $template = substitute_env($template, 'PGBOUNCER_DEFAULT_POOL_SIZE');
 $template = substitute_env($template, 'PGBOUNCER_IDLE_TIMEOUT');
+$template = substitute_env($template, 'PGBOUNCER_USER');
 
 if ($ENV{TLS_ENABLE} eq 'true') {
   $template = $template . "\nserver_tls_sslmode = " . $ENV{TLS_SSLMODE};
@@ -33,5 +34,5 @@ print $config_file $template;
 close $config_file;
 
 open(my $user_file, '>', '/etc/pgbouncer/userlist.txt');
-print $user_file "\"$ENV{'PGBOUNCER_USER'}\" \"\"\n";
+print $user_file "\"$ENV{'PGBOUNCER_USER'}\" \"$ENV{'PGBOUNCER_PASSWORD_MD5'}\"\n";
 close $user_file;
