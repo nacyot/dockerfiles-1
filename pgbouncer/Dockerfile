@@ -20,6 +20,7 @@ WORKDIR /
 COPY --from=build /opt/pgbouncer /opt/pgbouncer
 ADD ./config.ini.sample /etc/pgbouncer/config.ini.sample
 ADD ./run.sh ./setup_configs.sh ./generate_config.pl /tmp/
+ADD https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem /etc/pgbouncer/
 
 ENV POSTGRES_HOST 0.0.0.0
 ENV POSTGRES_PORT 5432
@@ -30,6 +31,10 @@ ENV PGBOUNCER_MAX_CLIENT_CONN 10000
 ENV PGBOUNCER_DEFAULT_POOL_SIZE 400
 ENV PGBOUNCER_IDLE_TIMEOUT 240
 ENV PGBOUNCER_USER postgres
+
+ENV TLS_ENABLE false
+# ENV TLS_SSLMODE
+# ENV TLS_CA_FILE
 
 EXPOSE 6432
 CMD /tmp/setup_configs.sh && /tmp/run.sh
