@@ -1,5 +1,5 @@
 [databases]
-* = host={{POSTGRES_HOST}} port={{POSTGRES_PORT}} auth_user={{PGBOUNCER_USER}}
+* = host={{POSTGRES_HOST}} port={{POSTGRES_PORT}}
 
 [pgbouncer]
 listen_addr = {{PGBOUNCER_LISTEN_HOST}}
@@ -13,4 +13,3 @@ server_idle_timeout = {{PGBOUNCER_IDLE_TIMEOUT}}
 ignore_startup_parameters = extra_float_digits
 auth_type = md5
 auth_file = /etc/pgbouncer/userlist.txt
-auth_query = SELECT * FROM {{PGBOUNCER_USER}}.get_auth($1)
