@@ -15,6 +15,7 @@ my $file_content = do { local $/; <$sample_config_file> };
 $template = $file_content;
 $template = substitute_env($template, 'POSTGRES_HOST');
 $template = substitute_env($template, 'POSTGRES_PORT');
+$template = substitute_env($template, 'POSTGRES_DB');
 $template = substitute_env($template, 'PGBOUNCER_LISTEN_HOST');
 $template = substitute_env($template, 'PGBOUNCER_LISTEN_PORT');
 $template = substitute_env($template, 'PGBOUNCER_POOL_MODE');

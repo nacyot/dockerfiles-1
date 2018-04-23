@@ -1,5 +1,5 @@
 [databases]
-* = host={{POSTGRES_HOST}} port={{POSTGRES_PORT}}
+{{POSTGRES_DB}} = host={{POSTGRES_HOST}} port={{POSTGRES_PORT}} dbname={{POSTGRES_DB}}
 
 [pgbouncer]
 listen_addr = {{PGBOUNCER_LISTEN_HOST}}
