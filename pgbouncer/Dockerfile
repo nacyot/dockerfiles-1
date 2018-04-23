@@ -20,7 +20,9 @@ WORKDIR /
 COPY --from=build /opt/pgbouncer /opt/pgbouncer
 ADD ./config.ini.sample /etc/pgbouncer/config.ini.sample
 ADD ./run.sh ./setup_configs.sh ./generate_config.pl /tmp/
+
 ADD https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem /etc/pgbouncer/
+RUN chown -R postgres:postgres /etc/pgbouncer
 
 ENV POSTGRES_HOST 0.0.0.0
 ENV POSTGRES_PORT 5432
