@@ -10,7 +10,7 @@ RUN git clone --depth=1 --branch pgbouncer_1_8_1 https://github.com/pgbouncer/pg
   git submodule update &&\
   mkdir -p /opt/pgbouncer &&\
   ./autogen.sh &&\
-  ./configure --prefix=/opt/pgbouncer --with-libevent=/usr/lib  --with-pam=yes &&\
+  ./configure --prefix=/opt/pgbouncer --with-libevent=/usr/lib  --with-pam=yes --with-openssl=yes&&\
   make &&\
   make install
 
