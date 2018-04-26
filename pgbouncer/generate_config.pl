@@ -23,6 +23,8 @@ $template = substitute_env($template, 'PGBOUNCER_MAX_CLIENT_CONN');
 $template = substitute_env($template, 'PGBOUNCER_DEFAULT_POOL_SIZE');
 $template = substitute_env($template, 'PGBOUNCER_IDLE_TIMEOUT');
 $template = substitute_env($template, 'PGBOUNCER_USER');
+$template = substitute_env($template, 'PGBOUNCER_ADMIN_USERS');
+$template = substitute_env($template, 'PGBOUNCER_STAT_USERS');
 
 if ($ENV{TLS_ENABLE} eq 'true') {
   $template = $template . "\nserver_tls_sslmode = " . $ENV{TLS_SSLMODE};
