@@ -14,3 +14,4 @@ auth_type = md5
 auth_file = /etc/pgbouncer/userlist.txt
 admin_users = {{PGBOUNCER_ADMIN_USERS}}
 stat_users = {{PGBOUNCER_STAT_USERS}}
+server_round_robin = {{PGBOUNCER_SERVER_ROUND_ROBIN}}

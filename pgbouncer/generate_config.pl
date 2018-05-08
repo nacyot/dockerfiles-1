@@ -25,6 +25,7 @@ $template = substitute_env($template, 'PGBOUNCER_IDLE_TIMEOUT');
 $template = substitute_env($template, 'PGBOUNCER_USER');
 $template = substitute_env($template, 'PGBOUNCER_ADMIN_USERS');
 $template = substitute_env($template, 'PGBOUNCER_STAT_USERS');
+$template = substitute_env($template, 'PGBOUNCER_SERVER_ROUND_ROBIN');
 
 if ($ENV{TLS_ENABLE} eq 'true') {
   $template = $template . "\nserver_tls_sslmode = " . $ENV{TLS_SSLMODE};
