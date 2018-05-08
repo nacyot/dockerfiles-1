@@ -11,11 +11,17 @@ my $template = '';
 
 open my $sample_config_file, '<', '/etc/pgbouncer/config.ini.sample' or die "Can't open file $!";
 my $file_content = do { local $/; <$sample_config_file> };
-
 $template = $file_content;
-$template = substitute_env($template, 'POSTGRES_HOST');
-$template = substitute_env($template, 'POSTGRES_PORT');
-$template = substitute_env($template, 'POSTGRES_DB');
+
+my @dbs = split /\|\|/, $ENV{'DATABASES'};
+my $dbs_config = '';
+
+for my $db (@dbs) {
+    my @db_config = split /\|/, $db;
+    $dbs_config = $dbs_config . $db_config[0] . " = host=" . $db_config[1] . " port=" . $db_config[2] . " dbname=" . $db_config[3] . "\n";
+}
+
+$template =~ s/\{\{DATABASES\}\}/$dbs_config/g;
 $template = substitute_env($template, 'PGBOUNCER_LISTEN_HOST');
 $template = substitute_env($template, 'PGBOUNCER_LISTEN_PORT');
 $template = substitute_env($template, 'PGBOUNCER_POOL_MODE');

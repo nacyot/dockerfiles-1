@@ -24,9 +24,7 @@ ADD ./run.sh ./setup_configs.sh ./generate_config.pl /tmp/
 ADD https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem /etc/pgbouncer/
 RUN chown -R postgres:postgres /etc/pgbouncer
 
-ENV POSTGRES_HOST 0.0.0.0
-ENV POSTGRES_PORT 5432
-ENV POSTGRES_DB postgres
+# ENV DATABASES "a|0.0.0.0|5432|postgres||"
 ENV PGBOUNCER_LISTEN_HOST 0.0.0.0
 ENV PGBOUNCER_LISTEN_PORT 6432
 ENV PGBOUNCER_POOL_MODE transaction
